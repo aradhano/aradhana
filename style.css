@@ -99,25 +99,93 @@ h2 {
 
 /* Posts Grid */
 .posts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
-}
-
-/* Individual Post Cards */
-.post {
-  background: #FFE8CD;
-  border-radius: 18px;
-  box-shadow:
-    0 8px 15px rgba(255, 214, 186, 0.7),
-    inset 0 0 60px #fff1e6;
-  padding: 30px 25px;
+  max-height: 600px; /* Tall chat box */
+  overflow-y: auto;
+  padding: 20px;
+  background: #FFF2EB;
+  border-radius: 20px;
+  box-shadow: inset 0 0 10px rgba(255, 214, 186, 0.4);
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  user-select: none;
+  gap: 20px;
+  scroll-behavior: smooth;
 }
+
+/* Custom scrollbar */
+.posts-grid::-webkit-scrollbar {
+  width: 10px;
+}
+.posts-grid::-webkit-scrollbar-thumb {
+  background-color: #FFB6B9;
+  border-radius: 10px;
+}
+.posts-grid::-webkit-scrollbar-track {
+  background-color: #FFE8CD;
+}
+
+
+/* Individual Post Cards */
+.post .post {
+  max-width: 75%;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(255, 214, 186, 0.5);
+  background: #FFE8CD;
+  position: relative;
+  animation: fadeInUp 0.5s ease both;
+}
+
+.post:nth-child(odd) {
+  align-self: flex-start;
+  border-top-left-radius: 0;
+  background: #FFDCDC;
+}
+
+.post:nth-child(even) {
+  align-self: flex-end;
+  border-top-right-radius: 0;
+  background: #FFD6BA;
+}
+
+.post h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+  font-family: 'Playfair Display', serif;
+  color: #C4006B;
+}
+
+.post time {
+  font-size: 0.75rem;
+  color: #FF9CAC;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.post p {
+  font-size: 1rem;
+  color: #4A004A;
+}
+
+.post a {
+  margin-top: 10px;
+  display: inline-block;
+  color: #C4006B;
+  text-decoration: underline;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 .post:hover,
 .post:focus-within {
