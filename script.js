@@ -1,63 +1,59 @@
 const posts = [
   {
-    id: 1,
-    category: "Blog Post",
-    title: "Understanding Inflation",
-    date: "2025-06-01",
-    excerpt: "Inflation impacts everything from prices to wages. Let's explore its causes and consequences in this simple guide.",
-    url: "#"
+    title: "Understanding Inflation 📊",
+    time: "2025-06-01",
+    icon: "📈",
+    message: "Inflation impacts prices and wages. Here's a breakdown of its root causes and why central banks care so much.",
+    side: "left"
   },
   {
-    id: 2,
-    category: "Blog Post",
-    title: "How to Stay Creative",
-    date: "2025-05-15",
-    excerpt: "Some tips and tricks to keep your creativity flowing whether you’re writing poems or working on economics research.",
-    url: "#"
+    title: "A Walk in the Pink Garden 🌸",
+    time: "2025-05-22",
+    icon: "🌷",
+    message: "A short story about finding softness and joy in the smallest moments of life.",
+    side: "right"
   },
   {
-    id: 3,
-    category: "Story",
-    title: "A Walk in the Pink Garden",
-    date: "2025-04-20",
-    excerpt: "A short story about finding beauty in unexpected places and embracing the softness of life.",
-    url: "#"
+    title: "Blush of Dawn — A Poem ✨",
+    time: "2025-05-10",
+    icon: "📝",
+    message: "The sun rose pink, shy and slow / Draping light in pastel glow. 🌅",
+    side: "left"
   },
   {
-    id: 4,
-    category: "Poem",
-    title: "Blush of Dawn",
-    date: "2025-03-10",
-    excerpt: "A poem celebrating the gentle pink hues of morning and new beginnings.",
-    url: "#"
+    title: "Market Trends Q2 Report 💼",
+    time: "2025-04-30",
+    icon: "📊",
+    message: "Economics research into Q2's GDP trends, labor shifts, and consumer sentiment metrics.",
+    side: "right"
   },
   {
-    id: 5,
-    category: "Research",
-    title: "Market Trends Q2 2025",
-    date: "2025-06-05",
-    excerpt: "An analysis of market trends and economic indicators for the second quarter of 2025.",
-    url: "#"
+    title: "How to Stay Creative 🎨",
+    time: "2025-04-05",
+    icon: "💡",
+    message: "Tips to stay inspired while balancing artistic work and academic research.",
+    side: "left"
   }
 ];
 
-function loadPosts() {
-  const container = document.getElementById('posts-container');
-  
+function loadChat() {
+  const container = document.getElementById('chat-feed');
+
   posts.forEach(post => {
-    const postEl = document.createElement('article');
-    postEl.classList.add('post');
-    
-    postEl.innerHTML = `
-      <h3>${post.title} <small style="font-weight: 400; font-size: 0.8rem; color: #FF9CAC;">[${post.category}]</small></h3>
-      <time datetime="${post.date}">${new Date(post.date).toLocaleDateString(undefined, {year:'numeric', month:'long', day:'numeric'})}</time>
-      <p>${post.excerpt}</p>
-      <a href="${post.url}">Read More</a>
+    const bubble = document.createElement('div');
+    bubble.classList.add('chat-bubble', post.side);
+
+    bubble.innerHTML = `
+      <div class="chat-icon">${post.icon}</div>
+      <div class="chat-content">
+        <div class="chat-title">${post.title}</div>
+        <div class="chat-time">${new Date(post.time).toLocaleDateString()}</div>
+        <div class="chat-text">${post.message}</div>
+      </div>
     `;
 
-    container.appendChild(postEl);
+    container.appendChild(bubble);
   });
 }
 
-// Load posts on page load
-document.addEventListener('DOMContentLoaded', loadPosts);
+document.addEventListener('DOMContentLoaded', loadChat);
