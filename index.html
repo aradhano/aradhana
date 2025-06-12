@@ -3,27 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Barbie Blog Chat</title>
+  <title>flibiddydoo</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <header class="header">
-    <h1>Aradhana  💬</h1>
-    <p>bubble</p>
-  </header>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h1>flibiddy-do</h1>
+      <nav class="nav-links">
+        <a href="#" onclick="showSection('blogs')">Blogs</a>
+        <a href="#" onclick="showSection('poems')">Poems</a>
+      </nav>
+    </aside>
 
-  <main class="chat-container">
-    <div id="chat-feed" class="chat-feed">
-      <!-- Messages will be injected here -->
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <section id="blogs" class="content-section"> <!-- Add real blog posts here -->
+        <h2>Blogs</h2>
+        <p>Coming soon ✍️...</p>
+      </section>
+
+      <section id="poems" class="content-section" style="display:none;">
+        <h2>Poems</h2>
+        <p>Poetic musings here 🎀...</p>
+      </section>
+
+      <section id="chat" class="content-section" style="display:none;">
+        <section class="chat-input-box">
+          <textarea id="userMessage" placeholder="Write your message here..." rows="3"></textarea>
+          <button onclick="postMessage()">Post ✨</button>
+        </section>
+
+        <main class="chat-container">
+          <div id="chat-feed" class="chat-feed"></div>
+        </main>
+      </section>
+
+      <footer class="footer">
+        <p>© 2025 Aradhana</p>
+      </footer>
     </div>
-  </main>
-
-  <footer class="footer">
-    <p>© 2025 Aradhana</p>
-  </footer>
+  </div>
 
   <script src="posts.js"></script>
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
+      document.getElementById(sectionId).style.display = 'block';
+    }
+  </script>
+
 </body>
+
 </html>

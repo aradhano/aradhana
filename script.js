@@ -57,3 +57,31 @@ function loadChat() {
 }
 
 document.addEventListener('DOMContentLoaded', loadChat);
+function postMessage() {
+  const input = document.getElementById('userMessage');
+  const text = input.value.trim();
+
+  if (text === '') return;
+
+  const container = document.getElementById('chat-feed');
+
+  const bubble = document.createElement('div');
+  bubble.classList.add('chat-bubble', 'right');
+
+  bubble.innerHTML = `
+    <div class="chat-icon">💬</div>
+    <div class="chat-content">
+      <div class="chat-title">Guest Message</div>
+      <div class="chat-time">${new Date().toLocaleDateString()}</div>
+      <div class="chat-text">${text}</div>
+    </div>
+  `;
+
+  container.appendChild(bubble);
+
+  // Scroll to bottom
+  container.scrollTop = container.scrollHeight;
+
+  // Clear textarea
+  input.value = '';
+}
